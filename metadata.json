@@ -1,0 +1,40 @@
+{
+  "repository": {
+    "name": "compass-experiments",
+    "description": "A collection of experiments built with the Compass framework",
+    "url": "https://github.com/palisade/compass-experiments"
+  },
+  "experiments": [
+    {
+      "id": "what-is-capital-of-france",
+      "name": "what-is-capital-of-france",
+      "version": "0.1.0",
+      "description": "Simple Compass experiment: What is the capital of France?",
+      "path": "what-is-capital-of-france",
+      "package_name": "what_is_capital_of_france",
+      "python_version": ">=3.11",
+      "dependencies": [
+        "pydantic>=2.10.0",
+        "pydantic-settings>=2.10.0",
+        "openai>=2.7.0"
+      ],
+      "features": [
+        "Pydantic-based parameter configuration",
+        "OpenAI API integration",
+        "Structured result output"
+      ],
+      "entry_point": "python -m what_is_capital_of_france.run",
+      "docker_available": true,
+      "required_env_vars": [
+        "OPENAI_API_KEY"
+      ],
+      "optional_env_vars": [
+        "PROMPT",
+        "MODEL"
+      ]
+    }
+  ],
+  "metadata_version": "1.0.0",
+  "last_updated": "2025-11-13"
+}
+
