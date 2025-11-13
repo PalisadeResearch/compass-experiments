@@ -4,8 +4,8 @@ Compass Contract:
     Experiments define their own parameters. Compass framework handles storage.
 """
 
-from pydantic import ConfigDict, Field # type: ignore
-from pydantic_settings import BaseSettings  # type: ignore
+from pydantic import ConfigDict, Field
+from pydantic_settings import BaseSettings
 
 
 class Parameters(BaseSettings):

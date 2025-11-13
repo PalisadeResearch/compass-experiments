@@ -12,10 +12,10 @@ import json
 import sys
 from datetime import datetime
 
-from inspect_ai import Task, eval, task  # type: ignore
-from inspect_ai.dataset import Sample  # type: ignore
-from inspect_ai.scorer import match  # type: ignore
-from inspect_ai.solver import generate, system_message  # type: ignore
+from inspect_ai import Task, eval, task  
+from inspect_ai.dataset import Sample 
+from inspect_ai.scorer import match 
+from inspect_ai.solver import generate, system_message 
 
 from .parameters import Parameters
 
