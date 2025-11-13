@@ -1,12 +1,12 @@
 [project]
-name = "what-is-capital-of-france"
+name = "simple-prompt"
 version = "0.1.0"
 description = "Simple Compass experiment: What is the capital of France?"
 requires-python = ">=3.11"
 dependencies = [
     "pydantic>=2.10.0",
     "pydantic-settings>=2.10.0",
-    "openai>=2.7.0",
+    "inspect-ai>=0.3.0",
 ]
 
 [build-system]
@@ -14,5 +14,5 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/what_is_capital_of_france"]
+packages = ["src/simple_prompt"]
 

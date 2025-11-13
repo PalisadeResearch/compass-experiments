@@ -16,12 +16,13 @@
       "dependencies": [
         "pydantic>=2.10.0",
         "pydantic-settings>=2.10.0",
-        "openai>=2.7.0"
+        "inspect-ai>=0.3.0"
       ],
       "features": [
         "Pydantic-based parameter configuration",
-        "OpenAI API integration",
-        "Structured result output"
+        "Inspect AI integration with tasks and scorers",
+        "Structured result output with relative fsspec paths",
+        "Compass contract implementation"
       ],
       "entry_point": "python -m what_is_capital_of_france.run",
       "docker_available": true,
@@ -29,8 +30,9 @@
         "OPENAI_API_KEY"
       ],
       "optional_env_vars": [
+        "MODEL_NAME",
         "PROMPT",
-        "MODEL"
+        "EXPECTED_ANSWER"
       ]
     }
   ],
