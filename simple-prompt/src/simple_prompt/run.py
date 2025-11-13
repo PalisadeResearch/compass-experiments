@@ -21,7 +21,7 @@ from .parameters import Parameters
 
 
 @task
-def capital_of_france_task(parameters: Parameters) -> Task:
+def _task(parameters: Parameters) -> Task:
     """Define an Inspect AI task that asks about the capital of France.
 
     Args:
@@ -49,7 +49,7 @@ def capital_of_france_task(parameters: Parameters) -> Task:
     )
 
 
-def run_experiment(parameters: Parameters):
+def _run(parameters: Parameters):
     """Run the experiment using Inspect AI.
 
     Compass Contract:
@@ -69,7 +69,7 @@ def run_experiment(parameters: Parameters):
 
     # Run Inspect AI evaluation
     results = eval(
-        capital_of_france_task(parameters),
+        _task(parameters),
         model=parameters.model_name,
     )
 
@@ -93,7 +93,7 @@ def main():
         parameters = Parameters()
 
         # Run the experiment
-        run_experiment(parameters)
+        _run(parameters)
 
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
