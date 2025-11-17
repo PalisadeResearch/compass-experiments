@@ -1,42 +1,13 @@
 {
-  "repository": {
-    "name": "compass-experiments",
-    "description": "A collection of experiments built with the Compass framework",
-    "url": "https://github.com/palisade/compass-experiments"
-  },
-  "experiments": [
-    {
-      "id": "simple-prompt",
-      "name": "simple-prompt",
-      "version": "0.1.0",
-      "description": "Simple Compass experiment: Simple prompt",
+  "version": 1,
+  "name": "compass-experiments",
+  "description": "A collection of experiments built with the Compass framework",
+  "url": "https://github.com/palisade/compass-experiments",
+  "experiments": {
+    "simple-prompt": {
       "path": "simple-prompt",
-      "package_name": "simple_prompt",
-      "python_version": ">=3.11",
-      "dependencies": [
-        "pydantic>=2.10.0",
-        "pydantic-settings>=2.10.0",
-        "inspect-ai>=0.3.0"
-      ],
-      "features": [
-        "Pydantic-based parameter configuration",
-        "Inspect AI integration with tasks and scorers",
-        "Structured result output with relative fsspec paths",
-        "Compass contract implementation"
-      ],
-      "entry_point": "python -m simple_prompt.run",
-      "docker_available": true,
-      "required_env_vars": [
-        "OPENAI_API_KEY"
-      ],
-      "optional_env_vars": [
-        "MODEL_NAME",
-        "PROMPT",
-        "EXPECTED_ANSWER"
-      ]
+      "description": "Simple Compass experiment: Simple prompt",
+      "tags": ["pydantic", "inspect-ai", "docker"]
     }
-  ],
-  "metadata_version": "1.0.0",
-  "last_updated": "2025-11-17"
+  }
 }
-
