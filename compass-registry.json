@@ -6,12 +6,12 @@
   },
   "experiments": [
     {
-      "id": "what-is-capital-of-france",
-      "name": "what-is-capital-of-france",
+      "id": "simple-prompt",
+      "name": "simple-prompt",
       "version": "0.1.0",
-      "description": "Simple Compass experiment: What is the capital of France?",
-      "path": "what-is-capital-of-france",
-      "package_name": "what_is_capital_of_france",
+      "description": "Simple Compass experiment: Simple prompt",
+      "path": "simple-prompt",
+      "package_name": "simple_prompt",
       "python_version": ">=3.11",
       "dependencies": [
         "pydantic>=2.10.0",
@@ -24,7 +24,7 @@
         "Structured result output with relative fsspec paths",
         "Compass contract implementation"
       ],
-      "entry_point": "python -m what_is_capital_of_france.run",
+      "entry_point": "python -m simple_prompt.run",
       "docker_available": true,
       "required_env_vars": [
         "OPENAI_API_KEY"
@@ -37,6 +37,6 @@
     }
   ],
   "metadata_version": "1.0.0",
-  "last_updated": "2025-11-13"
+  "last_updated": "2025-11-17"
 }
 
