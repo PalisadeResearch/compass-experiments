@@ -7,6 +7,7 @@ dependencies = [
     "pydantic>=2.10.0",
     "pydantic-settings>=2.10.0",
     "inspect-ai>=0.3.0",
+    "openai>=2.7.0",
 ]
 
 [build-system]
@@ -15,4 +16,3 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/simple_prompt"]
-

@@ -1,28 +1,19 @@
 #!/usr/bin/env python3
-"""Run an experiment that asks 'What is the capital of France?' using Inspect AI.
+"""Run an experiment that asks a simple prompt"""
 
-This experiment demonstrates the Compass framework with Inspect AI:
-1. Define an Inspect AI task with dataset, plan, and scorer
-2. Run the evaluation
-3. Return results with a relative output path
-4. Compass framework handles writing to the configured storage location
-"""
-
-import json
 import sys
-from datetime import datetime
 
 from inspect_ai import Task, eval, task  
 from inspect_ai.dataset import Sample 
+from inspect_ai.log import EvalLog
 from inspect_ai.scorer import match 
 from inspect_ai.solver import generate, system_message 
 
 from .parameters import Parameters
 
-
 @task
 def _task(parameters: Parameters) -> Task:
-    """Define an Inspect AI task that asks about the capital of France.
+    """Define an Inspect AI task that asks a simple prompt.
 
     Args:
         parameters: Experiment parameters containing the prompt
@@ -30,30 +21,27 @@ def _task(parameters: Parameters) -> Task:
     Returns:
         Task: An Inspect AI task with the dataset, plan, and scorer
     """
-    # Create a single-sample dataset with the prompt
     dataset = [
         Sample(input=parameters.prompt, target=parameters.expected_answer),
     ]
 
-    # Define the evaluation plan
     plan = [
         system_message("You are a helpful assistant. Answer questions concisely."),
-        generate(),  # Generate a response from the model
+        generate(), 
     ]
 
-    # Use match scorer to check if the response matches the expected answer
     return Task(
         dataset=dataset,
         plan=plan,
-        scorer=match(),  # Exact match scorer
+        scorer=match(),  
     )
 
 
-def _run(parameters: Parameters):
+def _run(parameters: Parameters) -> EvalLog:
     """Run the experiment using Inspect AI.
 
     Compass Contract:
-        1. Define Inspect AI tasks (see capital_of_france_task() above)
+        1. Define Inspect AI tasks (see _task() above)
         2. Run eval() with the task and model
         3. Return results dict with 'output_path' and 'data' keys
         4. Compass framework will write 'data' to the configured storage location
@@ -62,38 +50,27 @@ def _run(parameters: Parameters):
         parameters: Experiment parameters
 
     Returns:
-        dict: Must contain 'output_path' (relative path) and 'data' (results to write)
+        EvalLog: Inspect AI evaluation results
     """
     print(f"Running experiment with model: {parameters.model_name}")
     print(f"Prompt: {parameters.prompt}")
 
-    # Run Inspect AI evaluation
-    results = eval(
+    return eval(
         _task(parameters),
         model=parameters.model_name,
+        log_dir=parameters.log_dir,
     )
 
-    # Get timestamp for output path
-    timestamp = datetime.now().strftime("%Y-%m-%dT%H-%M-%S.%f")
-
-    return {
-        "output_path": f"what-is-capital-of-france/{timestamp.replace(':', '-')}/results.json",
-        "data": results,
-    }
-
-
-def main():
+def main() -> EvalLog:
     """Main entry point.
 
-    When run directly (not through Compass), prints results to stdout.
-    When run through Compass, returns results for framework to handle storage.
+    Returns:
+        EvalLog: Compass evaluation results
     """
     try:
-        # Load parameters from environment variables
         parameters = Parameters()
 
-        # Run the experiment
-        _run(parameters)
+        return _run(parameters)
 
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
@@ -101,7 +78,6 @@ def main():
 
         traceback.print_exc()
         sys.exit(1)
-
 
 if __name__ == "__main__":
     main()
