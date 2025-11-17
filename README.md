@@ -2,18 +2,6 @@
 
 A collection of experiments built with the [Compass](https://github.com/palisade/compass) framework.
 
-## Available Experiments
-
-### what-is-capital-of-france
-
-A simple example experiment that demonstrates how to:
-- Use Compass experiment framework
-- Configure models using Pydantic settings
-- Make API calls to OpenAI
-- Structure experiment parameters
-
-**Default behavior**: Asks GPT-4 "What is the capital of France?"
-
 ## Using These Experiments
 
 ### Installation
@@ -21,7 +9,7 @@ A simple example experiment that demonstrates how to:
 Each experiment is a standalone Python package. To use an experiment:
 
 ```bash
-cd what-is-capital-of-france
+cd simple-prompt
 uv sync  # or pip install -e .
 ```
 
@@ -30,18 +18,18 @@ uv sync  # or pip install -e .
 Set up your API keys:
 
 ```bash
-export OPENAI_API_KEY="your-key-here"
+export OPENAI_API_KEY=<YOUR_OPENAI_API_KEY>
 ```
 
 Run the experiment:
 
 ```bash
-uv run python -m what_is_capital_of_france.run
+uv run python -m simple_prompt.run
 ```
 
 ### Configuration
 
-Experiments use environment variables for configuration. See each experiment's README for specific parameters.
+Experiments use environment variables for configuration. See each experiment's README for specific parameters. You can set the environment variables in the `.env` file.
 
 ## Contributing
 
